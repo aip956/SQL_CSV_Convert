@@ -72,9 +72,9 @@ if __name__ == "__main__":
     
     # Convert SQL to CSV and print result
     fault_lines_csv = sql_to_csv(database_file, fault_lines_table)
-    with open("fault_lines.csv", "w") as file:
+    with open("list_fault_lines.csv", "w") as file:
         file.write(fault_lines_csv)
-    print("SQL to CSV conversion complete; saved to 'fault_lines.csv'.")
+    print("SQL to CSV conversion complete; saved to 'list_fault_lines.csv'.")
 
     # Part 2: CSV to SQL - Volcanoes
     volcano_csv_file = "list_volcano.csv"
@@ -91,9 +91,9 @@ if __name__ == "__main__":
         csv_to_sql(csv_file, volcano_db_file, volcano_table)
     print(f"Volcanoes successfully added to '{volcano_db_file}' in table {volcano_table}'.")
 
-    # Part 3b: Use SQL to CSV for the Fault Lines table
-    print("\nPart 3b: Extracting fault lines from the database to CSV")
-    fault_lines_csv = sql_to_csv(database_file, fault_lines_table)
-    with open("list_fault_lines.csv", "w") as file:
-        file.write(fault_lines_csv)
-    print("Fault lines successfully exported to 'list_fault_lines.csv'.")
+    # # Part 3b: Use SQL to CSV for the Fault Lines table
+    # print("\nPart 3b: Extracting fault lines from the database to CSV")
+    # fault_lines_csv = sql_to_csv(database_file, fault_lines_table)
+    # with open("list_fault_lines.csv", "w") as file:
+    #     file.write(fault_lines_csv)
+    # print("Fault lines successfully exported to 'list_fault_lines.csv'.")

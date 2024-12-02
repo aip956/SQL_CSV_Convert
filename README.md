@@ -46,4 +46,4 @@ This project ensures seamles data translation while maintaining data integrity, 
 
 
 Add output screen capture
-create git repo
+simplify output to only one .csv
