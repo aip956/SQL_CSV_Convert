@@ -42,7 +42,7 @@ This project ensures seamles data translation while maintaining data integrity, 
 3. Check the output
     - fault_lines.csv: Contains the converted CSV data from all_fault_line.db
     - list_volcanoes.db: Contains the SQLite database populated from list_volcano.csv
-    - fault_lines_part3b.csv: Another CSV file generated as part of the final task
+    - list_fault_lines.csv: Another CSV file generated as part of the final task
 
 
 Add output screen capture

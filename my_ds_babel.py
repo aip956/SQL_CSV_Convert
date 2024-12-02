@@ -13,7 +13,7 @@ def sql_to_csv(database, table_name):
     # print the number of rows
     cursor.execute(f"SELECT COUNT(*) FROM {table_name}")
     row_count = cursor.fetchone()[0]
-    print("row_count: ", row_count)
+    # print("row_count: ", row_count)
 
     cursor.execute(f"SELECT * FROM {table_name}")
     rows = cursor.fetchall()
@@ -94,6 +94,6 @@ if __name__ == "__main__":
     # Part 3b: Use SQL to CSV for the Fault Lines table
     print("\nPart 3b: Extracting fault lines from the database to CSV")
     fault_lines_csv = sql_to_csv(database_file, fault_lines_table)
-    with open("fault_lines_part3b.csv", "w") as file:
+    with open("list_fault_lines.csv", "w") as file:
         file.write(fault_lines_csv)
-    print("Fault lines successfully exported to 'fault_lines_part3b.csv'.")
+    print("Fault lines successfully exported to 'list_fault_lines.csv'.")
