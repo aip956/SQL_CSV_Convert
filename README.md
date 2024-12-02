@@ -1,4 +1,4 @@
-# Welcome to my ds babel
+# Welcome to the SQL-CSV converter
 
 ## Task
 The task is to bridge the gap between different data formats by converting data between SQL and CSV. This involves:
