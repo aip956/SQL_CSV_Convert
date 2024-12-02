@@ -20,14 +20,15 @@ To solve the problem, I created two core functions:
 This project ensures seamles data translation while maintaining data integrity, providing a practical solution for scenarios involving SQL and CSV format exchanges.
 
 ## Installation
-1. Clone the repository
-   ` git clone `
+1. Clone the repository </br>
+   `git clone https://github.com/aip956/SQL_CSV_Convert` <br>
+   `cd SQL_CSV_Convert`
 
-2. Set up a virtual environment (optional, but recommended)
-   `python3 -m venv venv
-   source venv/bin/activate
-   venv\Scripts\activate #Windows`
-3. Install dependencies
+2. Set up a virtual environment (optional, but recommended)<br>
+   `python3 -m venv venv`<br>
+   `source venv/bin/activate`<br>
+   `venv\Scripts\activate` #Windows<br>
+3. Install dependencies<br>
    Python 3.6 or above
    (sqlite3, csv, and io are part of Python standard library modules)
    
