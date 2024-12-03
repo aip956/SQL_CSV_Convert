@@ -3,6 +3,13 @@ import csv
 import io
 
 # Convert SQL table to CSV
+# Converts a specified table from an SQLite db to CSV format.
+# Args: 
+#     - database (str): Path to the SQLite db file
+#     - table name (str): Name of the table to export
+# Returns:
+#     - str: CSV-formatted string of the table content
+
 def sql_to_csv(database, table_name):
     # Use "List of all fault lines"
     # Connect to the SQLite db
@@ -25,18 +32,20 @@ def sql_to_csv(database, table_name):
     # Write to CSV format
     output = io.StringIO()
     csv_writer = csv.writer(output)
+    csv_writer.writerow(columns) # Write header
+    csv_writer.writerows(rows)     # Write data rows
 
-    # Write header
-    csv_writer.writerow(columns)
-    # Write data rows
-    csv_writer.writerows(rows)
-
-    # Close the database connection
-    conn.close()
-
+    conn.close() # Close the database connection
     return output.getvalue()
 
 # Function to convert CSV to SQL table
+# Creates a table in an SQLite db from CSV content and populates it with data.
+# Args:
+#     - csv_content (file-like object): CSV content to be imported.
+#     - database (str): Path to the SQLite db file
+#     - table_name (str): Name of the table to create and populate.
+# Returns:
+#     - None
 def csv_to_sql(csv_content, database, table_name):
     # Connect to the SQLite db
     conn = sqlite3.connect(database)
@@ -45,9 +54,8 @@ def csv_to_sql(csv_content, database, table_name):
     # Read CSV content
     csv_reader = csv.reader(csv_content)
 
-    # Extract column names from the first row
-    columns = next(csv_reader)
-    print("Columns:", columns)
+    columns = next(csv_reader) # Extract column names from the first row
+    # print("Columns:", columns)
     placeholders = ', '.join(['?' for _ in columns]) # Creates placholders for INSERT
 
     # Create the table dynamically
@@ -65,31 +73,31 @@ def csv_to_sql(csv_content, database, table_name):
 
 # Main program: Execute all parts
 if __name__ == "__main__":
-    # Part 1: SQL to CSV - Fault Lines
+    # Part 1 and 3b: SQL to CSV - Export fault_lines table
     database_file = "all_fault_line.db"
     fault_lines_table = "fault_lines"
-    print("Running SQL to CSV (Fault Lines)")
-    
-    # Convert SQL to CSV and print result
-    fault_lines_csv = sql_to_csv(database_file, fault_lines_table)
+    print("Exporting fault lines from SQL to CSV")
+        
+    fault_lines_csv = sql_to_csv(database_file, fault_lines_table) # Convert SQL to CSV and print result
     with open("list_fault_lines.csv", "w") as file:
         file.write(fault_lines_csv)
-    print("SQL to CSV conversion complete; saved to 'list_fault_lines.csv'.")
+    print("SQL to CSV conversion and export complete; saved to 'list_fault_lines.csv'.")
+    
 
-    # Part 2: CSV to SQL - Volcanoes
+    # Part 2 and 3a: CSV to SQL - Import volcanoes data
     volcano_csv_file = "list_volcano.csv"
     volcano_db_file = "list_volcanoes.db"
     volcano_table = "volcanoes"
-    print("\nRunning CSV to SQL (Volcanoes)")
-    with open(volcano_csv_file, "r") as csv_file:
-        csv_to_sql(csv_file,volcano_db_file, volcano_table)
-    print("CSV to SQL conversion complete. Data stored in 'list_volcanoes.db'.")
-
-    # Part 3a: Use CSV to SQL for the Volcanoes CSV
-    print("\nPart 3a: Populating the database with volcanoes from CSV")
+    print("\nImporting volcanoes from CSV to SQL")
     with open(volcano_csv_file, "r") as csv_file:
         csv_to_sql(csv_file, volcano_db_file, volcano_table)
-    print(f"Volcanoes successfully added to '{volcano_db_file}' in table {volcano_table}'.")
+    print("Import complete. Data stored in 'list_volcanoes.db'.")
+
+    # Part 3a: Populate the database with volcanoes from CSV
+    # print("\nPart 3a: Populating the database with volcanoes from CSV")
+    # with open(volcano_csv_file, "r") as csv_file:
+    #     csv_to_sql(csv_file, volcano_db_file, volcano_table)
+    # print(f"Volcanoes successfully added to '{volcano_db_file}' in table {volcano_table}'.")
 
     # # Part 3b: Use SQL to CSV for the Fault Lines table
     # print("\nPart 3b: Extracting fault lines from the database to CSV")

@@ -40,10 +40,13 @@ This project ensures seamles data translation while maintaining data integrity, 
 2. Run the script
    `python3 my_ds_babel.py`
 3. Check the output
-    - fault_lines.csv: Contains the converted CSV data from all_fault_line.db
     - list_volcanoes.db: Contains the SQLite database populated from list_volcano.csv
     - list_fault_lines.csv: Another CSV file generated as part of the final task
+      - Screen capture of the csv:
+    </br></br>
+        ![Screen capture of list_fault_lines.csv](fault_lines.png)
+</br>
 
 
-Add output screen capture
-simplify output to only one .csv
+
+
