@@ -93,15 +93,3 @@ if __name__ == "__main__":
         csv_to_sql(csv_file, volcano_db_file, volcano_table)
     print("Import complete. Data stored in 'list_volcanoes.db'.")
 
-    # Part 3a: Populate the database with volcanoes from CSV
-    # print("\nPart 3a: Populating the database with volcanoes from CSV")
-    # with open(volcano_csv_file, "r") as csv_file:
-    #     csv_to_sql(csv_file, volcano_db_file, volcano_table)
-    # print(f"Volcanoes successfully added to '{volcano_db_file}' in table {volcano_table}'.")
-
-    # # Part 3b: Use SQL to CSV for the Fault Lines table
-    # print("\nPart 3b: Extracting fault lines from the database to CSV")
-    # fault_lines_csv = sql_to_csv(database_file, fault_lines_table)
-    # with open("list_fault_lines.csv", "w") as file:
-    #     file.write(fault_lines_csv)
-    # print("Fault lines successfully exported to 'list_fault_lines.csv'.")
